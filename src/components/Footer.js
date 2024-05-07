@@ -1,8 +1,9 @@
+import React from "react"
 import noteLogo from "../assets/note-logo.png"
 
 const Footer = () => {
   return (
-    <>
+    <footer>
       <hr className="mx-4 mb-4 text-lightGray" />
 
       <div className="flex justify-between bg-white">
@@ -15,7 +16,7 @@ const Footer = () => {
           className="h-7 mx-4 my-2"
         />
       </div>
-    </>
+    </footer>
   )
 }
 
