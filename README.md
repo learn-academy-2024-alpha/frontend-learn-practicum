@@ -16,24 +16,29 @@ This application is the frontend of a decoupled full-stack application that allo
 
 ### ⚙️ Testing
 
-Testing is handled by React Testing Library and Jest
+Testing is handled by React Testing Library and Jest. Run the test suite with command:
 
-- Run the test suite with command `yarn test`
-- GitHub Actions will run a CI pipeline for testing and linting
+```bash
+yarn test
+```
 
 ### 🫧 Linting
 
-Check for linting errors in the project by running:
+Linting is handled by Prettier. Check for linting errors in the project by running:
 
 ```bash
-WIP
+yarn prettier:check:ci
 ```
 
 Fix most lint issues in the project by running:
 
 ```bash
-WIP
+yarn prettier:format
 ```
+
+### 🏃‍♀️ GitHub Actions
+
+GitHub Actions will run workflows for linting and testing on each push.
 
 ### 🤝 Application Dependencies
 
@@ -48,6 +53,7 @@ A few of the many resources that helped to build this application.
 
 - [Add Tailwind to React App with Yarn](https://dev.to/ashirbadgudu/set-up-tailwind-css-with-create-react-app-and-yarn-pio)
 - [Building A Custom Fetch Hook In React](https://blog.openreplay.com/building-a-custom-fetch-hook-in-react/)
+- [Prettier in GitHub Actions](https://akhilaariyachandra.com/blog/prettier-in-github-actions)
 
 ### 🚀 Deployment
 
