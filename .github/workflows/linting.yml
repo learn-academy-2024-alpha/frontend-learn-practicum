@@ -22,6 +22,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn add -D
+        run: yarn
       - name: Check formatting with Prettier
         run: yarn prettier:check:ci
