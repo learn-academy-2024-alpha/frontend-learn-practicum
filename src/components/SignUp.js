@@ -2,14 +2,16 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useFetch } from "../utilities/useFetch"
 
-const SignIn = ({ setFormStatus }) => {
-  const [userLogin, setUserLogin] = useState(null)
+const SignUp = ({ setFormStatus }) => {
+  const [userSignUp, setUserSignUp] = useState(null)
   const [submitted, setSubmitted] = useState(false)
-  const { data, loading } = useFetch(userLogin, "login", "POST", "/dashboard")
+  const { data, loading } = useFetch(userSignUp, "signup", "POST")
 
   const preloadedValues = {
-    email: "anita.ullrich@jerde-reinger.example",
-    password: "uSto8Cpy"
+    email: "test1@example.com",
+    username: "test1",
+    password: "password",
+    password_confirmation: "password"
   }
   const {
     register,
@@ -19,14 +21,14 @@ const SignIn = ({ setFormStatus }) => {
 
   const onSubmit = (formData, e) => {
     e.preventDefault()
-    setUserLogin({ user: formData })
+    setUserSignUp({ user: formData })
     setSubmitted(true)
   }
 
   return (
     <div className="mt-10 h-[calc(100vh-180px)] overflow-hidden">
       <div>
-        <h3 className="text-center text-xl my-4">Sign In</h3>
+        <h3 className="text-center text-xl my-4">Create an Account</h3>
       </div>
       <div className="text-center py-4">
         {loading && <span>Loading...</span>}
@@ -53,7 +55,22 @@ const SignIn = ({ setFormStatus }) => {
           </div>
           <div>
             <div className="mb-2">
-              <label htmlFor="password">Enter Your Password</label>
+              <label htmlFor="email">Create a Username</label>
+            </div>
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              className="border p-1 rounded border-lightGray block"
+              {...register("username", { required: true })}
+            />
+            {errors.username && (
+              <span className="text-error">Email is required</span>
+            )}
+          </div>
+          <div>
+            <div className="mb-2">
+              <label htmlFor="password">Create a Password</label>
             </div>
             <input
               id="password"
@@ -66,6 +83,21 @@ const SignIn = ({ setFormStatus }) => {
               <span className="text-error">Password is required</span>
             )}
           </div>
+          <div>
+            <div className="mb-2">
+              <label htmlFor="password">Confirm Your Password</label>
+            </div>
+            <input
+              id="password_confirmation"
+              type="password"
+              placeholder="Password"
+              className="border p-1 rounded border-lightGray block"
+              {...register("password_confirmation", { required: true })}
+            />
+            {errors.password_confirmation && (
+              <span className="text-error">Password is required</span>
+            )}
+          </div>
           <button
             type="submit"
             onClick={handleSubmit}
@@ -75,20 +107,20 @@ const SignIn = ({ setFormStatus }) => {
           </button>
           <button
             type="button"
-            onClick={() => setFormStatus("signUp")}
+            onClick={() => setFormStatus("signIn")}
             className="underline"
           >
-            Make an account
+            Already have an account?
           </button>
         </form>
       </div>
       {submitted && !data && (
         <div className="text-center py-4">
-          <span className="text-error">Invalid user, try again</span>
+          <span className="text-error">Something went wrong, try again</span>
         </div>
       )}
     </div>
   )
 }
 
-export default SignIn
+export default SignUp
