@@ -26,14 +26,14 @@ const SignIn = ({ setFormStatus }) => {
   return (
     <div className="mt-10 h-[calc(100vh-180px)] overflow-hidden">
       <div>
-        <h3 className="text-center text-xl my-4">Sign In</h3>
+        <h3 className="my-4 text-center text-xl">Sign In</h3>
       </div>
-      <div className="text-center py-4">
+      <div className="py-4 text-center">
         {loading && <span>Loading...</span>}
       </div>
       <div className="flex justify-center">
         <form
-          className="flex max-w-md flex-col gap-4 justify-center"
+          className="flex max-w-md flex-col justify-center gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
@@ -44,7 +44,7 @@ const SignIn = ({ setFormStatus }) => {
               id="email"
               type="email"
               placeholder="Email"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("email", { required: true })}
             />
             {errors.email && (
@@ -59,7 +59,7 @@ const SignIn = ({ setFormStatus }) => {
               id="password"
               type="password"
               placeholder="Password"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("password", { required: true })}
             />
             {errors.password && (
@@ -69,7 +69,7 @@ const SignIn = ({ setFormStatus }) => {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="border p-1 rounded bg-lightGray hover:bg-white"
+            className="rounded border bg-lightGray p-1 hover:bg-white"
           >
             Submit
           </button>
@@ -83,7 +83,7 @@ const SignIn = ({ setFormStatus }) => {
         </form>
       </div>
       {submitted && !data && (
-        <div className="text-center py-4">
+        <div className="py-4 text-center">
           <span className="text-error">Invalid user, try again</span>
         </div>
       )}

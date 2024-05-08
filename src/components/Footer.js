@@ -13,7 +13,7 @@ const Footer = () => {
         <img
           src={noteLogo}
           alt="black graphic of a note and a pencil"
-          className="h-7 mx-4 my-2"
+          className="mx-4 my-2 h-7"
         />
       </div>
     </footer>

@@ -28,14 +28,14 @@ const SignUp = ({ setFormStatus }) => {
   return (
     <div className="mt-10 h-[calc(100vh-180px)] overflow-hidden">
       <div>
-        <h3 className="text-center text-xl my-4">Create an Account</h3>
+        <h3 className="my-4 text-center text-xl">Create an Account</h3>
       </div>
-      <div className="text-center py-4">
+      <div className="py-4 text-center">
         {loading && <span>Loading...</span>}
       </div>
       <div className="flex justify-center">
         <form
-          className="flex max-w-md flex-col gap-4 justify-center"
+          className="flex max-w-md flex-col justify-center gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>
@@ -46,7 +46,7 @@ const SignUp = ({ setFormStatus }) => {
               id="email"
               type="email"
               placeholder="Email"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("email", { required: true })}
             />
             {errors.email && (
@@ -61,7 +61,7 @@ const SignUp = ({ setFormStatus }) => {
               id="username"
               type="text"
               placeholder="Username"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("username", { required: true })}
             />
             {errors.username && (
@@ -76,7 +76,7 @@ const SignUp = ({ setFormStatus }) => {
               id="password"
               type="password"
               placeholder="Password"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("password", { required: true })}
             />
             {errors.password && (
@@ -91,7 +91,7 @@ const SignUp = ({ setFormStatus }) => {
               id="password_confirmation"
               type="password"
               placeholder="Password"
-              className="border p-1 rounded border-lightGray block"
+              className="block rounded border border-lightGray p-1"
               {...register("password_confirmation", { required: true })}
             />
             {errors.password_confirmation && (
@@ -101,7 +101,7 @@ const SignUp = ({ setFormStatus }) => {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="border p-1 rounded bg-lightGray hover:bg-white"
+            className="rounded border bg-lightGray p-1 hover:bg-white"
           >
             Submit
           </button>
@@ -115,7 +115,7 @@ const SignUp = ({ setFormStatus }) => {
         </form>
       </div>
       {submitted && !data && (
-        <div className="text-center py-4">
+        <div className="py-4 text-center">
           <span className="text-error">Something went wrong, try again</span>
         </div>
       )}
