@@ -1,4 +1,4 @@
-name: React Tests
+name: React Linting
 
 on: push
 
@@ -6,14 +6,15 @@ env:
   NODE_OPTIONS: --max_old_space_size=4096
 
 jobs:
-  react_test:
-    name: React Tests
+  prettier:
+    name: Prettier
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "21"
+
       - name: Restore workspace cache
         uses: actions/cache@v3
         with:
@@ -21,7 +22,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn
-
-      - name: Run unit tests
-        run: yarn test
+        run: yarn add -D
+      - name: Check formatting with Prettier
+        run: yarn prettier:check:ci
