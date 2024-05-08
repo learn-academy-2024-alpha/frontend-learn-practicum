@@ -37,7 +37,7 @@ WIP
 
 ### 🤝 Application Dependencies
 
-- [Tailwind](https://tailwindcss.com/docs/guides/create-react-app)
+- [Tailwind](https://tailwindcss.com/)
 - [Flowbite React](https://flowbite-react.com/)
 - [React Router](https://reactrouter.com/en/main)
 - [React Form Hook](https://react-hook-form.com/get-started)
@@ -47,7 +47,8 @@ WIP
 A few of the many resources that helped to build this application.
 
 - [Add Tailwind to React App with Yarn](https://dev.to/ashirbadgudu/set-up-tailwind-css-with-create-react-app-and-yarn-pio)
+- [Building A Custom Fetch Hook In React](https://blog.openreplay.com/building-a-custom-fetch-hook-in-react/)
 
 ### 🚀 Deployment
 
-- The application is deployed on Render.com and available at [this url](https://backend-learn-practicum.onrender.com)
+- The application is deployed on Render.com and available at [this url](https://frontend-learn-practicum.onrender.com)
