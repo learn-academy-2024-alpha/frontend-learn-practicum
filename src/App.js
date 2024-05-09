@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import Dashboard from "./pages/Dashboard"
+import Main from "./pages/Main"
 import Landing from "./pages/Landing"
 
 const App = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -15,12 +16,21 @@ const App = () => {
     }
   }, [])
 
+  const signedInUser = (userData) => {
+    setUser(userData)
+    navigate("/main")
+  }
+  const signedOutUser = () => {
+    setUser(null)
+    navigate("/")
+  }
+
   return (
     <>
-      <Header />
+      <Header signedOutUser={signedOutUser} />
       <Routes>
-        <Route path="/" element={<Landing />} />
-        {user && <Route path="/dashboard" element={<Dashboard />} />}
+        <Route path="/" element={<Landing signedInUser={signedInUser} />} />
+        {user && <Route path="/main" element={<Main />} />}
       </Routes>
       <Footer />
     </>

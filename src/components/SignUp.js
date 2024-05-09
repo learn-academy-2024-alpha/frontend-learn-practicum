@@ -1,11 +1,9 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useFetch } from "../utilities/useFetch"
+import logInAndSignUP from "../utilities/loginAndSignUp.js"
 
-const SignUp = ({ setFormStatus }) => {
-  const [userSignUp, setUserSignUp] = useState(null)
-  const [submitted, setSubmitted] = useState(false)
-  const { data, loading } = useFetch(userSignUp, "signup", "POST")
+const SignUp = ({ setFormStatus, signedInUser }) => {
+  const [error, setError] = useState(false)
 
   const preloadedValues = {
     email: "test1@example.com",
@@ -19,19 +17,18 @@ const SignUp = ({ setFormStatus }) => {
     formState: { errors }
   } = useForm({ defaultValues: preloadedValues })
 
-  const onSubmit = (formData, e) => {
-    e.preventDefault()
-    setUserSignUp({ user: formData })
-    setSubmitted(true)
+  const onSubmit = (formData) => {
+    logInAndSignUP({ user: formData }, "signup").then((data) => {
+      data === "Error: invalid credentials"
+        ? setError(true)
+        : signedInUser(data)
+    })
   }
 
   return (
     <div className="mt-10 h-[calc(100vh-180px)] overflow-hidden">
       <div>
         <h3 className="my-4 text-center text-xl">Create an Account</h3>
-      </div>
-      <div className="py-4 text-center">
-        {loading && <span>Loading...</span>}
       </div>
       <div className="flex justify-center">
         <form
@@ -114,9 +111,9 @@ const SignUp = ({ setFormStatus }) => {
           </button>
         </form>
       </div>
-      {submitted && !data && (
+      {error && (
         <div className="py-4 text-center">
-          <span className="text-error">Something went wrong, try again</span>
+          <span className="text-error">Invalid user, try again</span>
         </div>
       )}
     </div>
