@@ -7,7 +7,7 @@ const Main = () => {
   const { data } = useFetchGet("notes")
   const notes = data
   return (
-    <div className="h-[calc(100vh-180px)] overflow-hidden">
+    <div className="h-[calc(100vh-100px)] overflow-hidden">
       <div className="flex h-full">
         <div className="w-64 bg-lightGray">
           <SideBar notes={notes} />

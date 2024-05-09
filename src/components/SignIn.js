@@ -24,9 +24,9 @@ const SignIn = ({ setFormStatus, signedInUser }) => {
   }
 
   return (
-    <div className="mt-10 h-[calc(100vh-180px)] overflow-hidden">
+    <>
       <div>
-        <h3 className="my-4 text-center text-xl">Sign In</h3>
+        <h3 className="my-8 text-center text-xl">Sign In</h3>
       </div>
       <div className="flex justify-center">
         <form
@@ -84,7 +84,7 @@ const SignIn = ({ setFormStatus, signedInUser }) => {
           <span className="text-error">Invalid user, try again</span>
         </div>
       )}
-    </div>
+    </>
   )
 }
 
