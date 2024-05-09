@@ -26,7 +26,7 @@ const Header = ({ signedOutUser }) => {
   }
   return (
     <header>
-      <div className="bg-neutral flex justify-between">
+      <div className="flex justify-between bg-neutral">
         <div className="flex">
           <img
             src={noteLogo}
