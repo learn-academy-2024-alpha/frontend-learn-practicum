@@ -1,8 +1,8 @@
 import React from "react"
 import noteLogo from "../assets/note-logo.png"
 import addUser from "../assets/add-user.png"
-import Edit from "../assets/edit.png"
-import Bin from "../assets/bin.png"
+import edit from "../assets/edit.png"
+import bin from "../assets/bin.png"
 import logOut from "../assets/logout.png"
 
 const Header = ({ signedOutUser }) => {
@@ -26,7 +26,7 @@ const Header = ({ signedOutUser }) => {
   }
   return (
     <header>
-      <div className="flex justify-between bg-neutral">
+      <div className="bg-neutral flex justify-between">
         <div className="flex">
           <img
             src={noteLogo}
@@ -34,7 +34,7 @@ const Header = ({ signedOutUser }) => {
             className="mx-4 my-2 flex h-7 justify-start"
           />
           <img
-            src={Edit}
+            src={edit}
             alt="black graphic of a notepad"
             className="mx-4 my-2 h-7"
           />
@@ -46,7 +46,7 @@ const Header = ({ signedOutUser }) => {
             className="mx-4 my-2 h-7"
           />
           <img
-            src={Bin}
+            src={bin}
             alt="black graphic of a trash bin"
             className="mx-4 my-2 h-7"
           />
