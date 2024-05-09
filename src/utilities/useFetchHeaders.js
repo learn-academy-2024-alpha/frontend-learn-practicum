@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 
 const useFetch = (formData, endpoint, requestMethod) => {
+  console.log("useFetch", formData, endpoint, requestMethod)
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-
   const developmentURL = "http://localhost:3000"
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const useFetch = (formData, endpoint, requestMethod) => {
           method: requestMethod,
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json"
+            Acceapt: "application/json"
           },
           body: JSON.stringify(formData)
         })
@@ -23,14 +23,6 @@ const useFetch = (formData, endpoint, requestMethod) => {
         const payload = await signInResponse.json()
         setLoading(false)
         setData(payload)
-        // handle storing user data and JWT in local storage
-        if (endpoint === "login" || endpoint === "signup") {
-          localStorage.setItem("user", JSON.stringify(payload))
-          localStorage.setItem(
-            "token",
-            signInResponse.headers.get("Authorization")
-          )
-        }
       } catch (error) {
         setError(error)
         setLoading(false)
