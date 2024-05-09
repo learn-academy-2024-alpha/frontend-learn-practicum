@@ -4,6 +4,7 @@
 
 - Contributor:
 - Contributor:
-- [Ticket]()
+- Did you run your tests?
+- Did you run your linter?
 
 ### 📝 Description of Changes
