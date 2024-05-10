@@ -1,9 +1,9 @@
 import React from "react"
 import noteLogo from "../assets/note-logo.png"
 import addUser from "../assets/add-user.png"
-import edit from "../assets/edit.png"
 import bin from "../assets/bin.png"
 import logOut from "../assets/logout.png"
+import NewModal from "./NewModal"
 
 const Header = ({ signedOutUser }) => {
   const signOut = async () => {
@@ -33,11 +33,7 @@ const Header = ({ signedOutUser }) => {
             alt="black graphic of a note and a pencil"
             className="mx-4 my-2 flex h-7 justify-start"
           />
-          <img
-            src={edit}
-            alt="black graphic of a notepad"
-            className="mx-4 my-2 h-7"
-          />
+          <NewModal />
         </div>
         <div className="flex justify-end">
           <img
