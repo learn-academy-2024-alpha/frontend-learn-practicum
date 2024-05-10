@@ -6,8 +6,8 @@ const SignIn = ({ setFormStatus, signedInUser }) => {
   const [error, setError] = useState(false)
 
   const preloadedValues = {
-    email: "audrie@ledner.test",
-    password: "2irDk1q8y778Id"
+    email: "rebecka@bahringer.example",
+    password: "yrL4YgmuQ"
   }
   const {
     register,
