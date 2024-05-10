@@ -10,7 +10,7 @@ const NotesCard = ({ note }) => {
   const { data } = useFetchGet(`user/${creator}`)
   const user = data
   return (
-    <div className=" 2px border">
+    <div className=" p1 border-b p-1">
       <Link>
         <div>
           <h1 className="text-ellipsis text-nowrap font-extrabold">{title}</h1>
