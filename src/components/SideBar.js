@@ -1,6 +1,5 @@
 import React from "react"
 import NotesCard from "./NotesCard"
-
 const SideBar = ({
   notes,
   setSelectedNote,
@@ -23,5 +22,4 @@ const SideBar = ({
     </>
   )
 }
-
 export default SideBar

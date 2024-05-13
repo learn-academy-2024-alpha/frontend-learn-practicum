@@ -1,7 +1,6 @@
 import React from "react"
 import { format } from "date-fns"
 import { useFetchGet } from "../utilities/useFetchGet"
-
 const NotesCard = ({
   note,
   setSelectedNote,
@@ -10,14 +9,12 @@ const NotesCard = ({
 }) => {
   const { title, creator, created_at } = note
   const formattedDate = format(created_at, "MMMM dd, yyyy")
-
   const { data } = useFetchGet(`user/${creator}`)
   const user = data
-  console.log(user)
   const handleClick = (clickedNote) => {
     setSelectedNote(clickedNote)
     setSelectedDate(formattedDate)
-    setSelectedUser(user)
+    setSelectedUser(user.username)
   }
   return (
     <div
@@ -37,5 +34,4 @@ const NotesCard = ({
     </div>
   )
 }
-
 export default NotesCard
