@@ -57,7 +57,7 @@ const NewModal = ({ createNote, user }) => {
         public: isPublic,
         creator: user.id
       })
-      dispatch({ type: "TOGGLE_MODAL" }) // Close modal on successful submission
+      dispatch({ type: "TOGGLE_MODAL" })
     } else {
       console.error("User data is not available")
     }
