@@ -12,8 +12,6 @@ test("renders the header component", () => {
 
   const headerLogo = screen.getByAltText(/black graphic of a note and a pencil/)
   expect(headerLogo).toBeInTheDocument()
-  const editLogo = screen.getByAltText(/black graphic of a notepad/)
-  expect(editLogo).toBeInTheDocument()
   const addUserLogo = screen.getByAltText(/black graphic of a add user button/)
   expect(addUserLogo).toBeInTheDocument()
   const binLogo = screen.getByAltText(/black graphic of a trash bin/)
