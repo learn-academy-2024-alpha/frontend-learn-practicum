@@ -69,14 +69,17 @@ const NewModal = ({ createNote, user }) => {
         <img src={edit} alt="Edit icon" className="mx-4 my-2 h-7" />
       </button>
       <Modal
+        className="m-auto h-4/5 w-1/2 bg-gray "
         show={state.openModal}
         onClose={() => dispatch({ type: "TOGGLE_MODAL" })}
       >
-        <Modal.Header>New Note</Modal.Header>
+        <Modal.Header className="m-3 text-xl font-semibold"></Modal.Header>
+        <h1 className="mb-3 text-center text-3xl font-semibold">
+          <u>Create a New Note</u>
+        </h1>
         <form onSubmit={handleFormSubmit}>
-          <fieldset className="flex max-w-md flex-col gap-4">
-            <legend className="mb-4">Make Note Public or Private</legend>
-            <div className="flex items-center gap-2">
+          <fieldset className=" p-10">
+            <div className="flex justify-center gap-4">
               <Radio
                 id="public"
                 name="public"
@@ -96,42 +99,44 @@ const NewModal = ({ createNote, user }) => {
             </div>
           </fieldset>
           <Modal.Body>
-            <div className="flex max-w-md flex-col gap-4">
-              <div>
-                <div className="mb-2 block">
-                  <Label htmlFor="title" value="Title" />
-                </div>
-                <TextInput
-                  id="title"
-                  type="text"
-                  sizing="md"
-                  value={state.title}
-                  onChange={(e) => handleInputChange("title", e.target.value)}
-                />
-                {state.errors.title && (
-                  <div className="text-error">Title is required</div>
-                )}
-              </div>
-              <div>
-                <div className="mb-2 block">
-                  <Label htmlFor="content" value="Content" />
-                </div>
-                <TextInput
-                  id="content"
-                  type="text"
-                  sizing="lg"
-                  value={state.content}
-                  onChange={(e) => handleInputChange("content", e.target.value)}
-                />
-                {state.errors.content && (
-                  <div className="text-error">Content is required</div>
-                )}
-              </div>
-            </div>
+            <Label htmlFor="title" className="mb-2 block text-center">
+              Title
+            </Label>
+            <input
+              id="title"
+              type="text"
+              className="mx-auto flex w-64 rounded-lg border-2 p-4"
+              value={state.title}
+              onChange={(e) => handleInputChange("title", e.target.value)}
+            />
+            {state.errors.title && (
+              <p className="mt-1 text-center text-xs text-red">
+                Title is required
+              </p>
+            )}
+
+            <Label htmlFor="content" className="mb-2 block text-center">
+              Content
+            </Label>
+            <textarea
+              className="mx-auto w-full rounded-lg border-2 p-4"
+              id="content"
+              rows="6"
+              value={state.content}
+              onChange={(e) => handleInputChange("content", e.target.value)}
+            />
+            {state.errors.content && (
+              <p className="mt-1 text-center text-xs text-red">
+                Content is required
+              </p>
+            )}
           </Modal.Body>
-          <Modal.Footer>
-            <Button type="submit">Create Note</Button>
-          </Modal.Footer>
+          <Button
+            className="focus:ring-blue-300 text-black mx-auto mb-4 mt-4 flex w-1/2 justify-center rounded bg-lightGray px-4 py-2 font-bold shadow-lg transition duration-150 ease-in-out hover:bg-neutral focus:outline-none focus:ring-4 focus:ring-opacity-50"
+            type="submit"
+          >
+            Create Note
+          </Button>
         </form>
       </Modal>
     </>
