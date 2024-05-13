@@ -5,7 +5,7 @@ import bin from "../assets/bin.png"
 import logOut from "../assets/logout.png"
 import NewModal from "./NewModal"
 
-const Header = ({ signedOutUser }) => {
+const Header = ({ signedOutUser, createNote, user }) => {
   const signOut = async () => {
     try {
       const signOutResponse = await fetch("http://localhost:3000/logout", {
@@ -33,7 +33,7 @@ const Header = ({ signedOutUser }) => {
             alt="black graphic of a note and a pencil"
             className="mx-4 my-2 flex h-7 justify-start"
           />
-          <NewModal />
+          <NewModal createNote={createNote} user={user} />
         </div>
         <div className="flex justify-end">
           <img
