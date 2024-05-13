@@ -1,11 +1,11 @@
 import React from "react"
 
-const NoteShow = ({ selectedNote }) => {
+const NoteShow = ({ selectedNote, selectedDate, selectedUser }) => {
   return (
     <div>
       <div>
-        <p>{selectedNote?.creator}</p>
-        <p>{selectedNote?.created_at}</p>
+        <p>{selectedDate}</p>
+        <p>{selectedUser}</p>
       </div>
       <h1 className="text-center text-4xl">{selectedNote?.title}</h1>
       <div className="px-20 py-10">
