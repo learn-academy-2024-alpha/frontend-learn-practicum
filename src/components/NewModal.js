@@ -110,7 +110,7 @@ const NewModal = ({ createNote, user }) => {
               onChange={(e) => handleInputChange("title", e.target.value)}
             />
             {state.errors.title && (
-              <p className="mt-1 text-center text-xs text-red">
+              <p className="mt-1 text-center text-xs text-error">
                 Title is required
               </p>
             )}
@@ -126,7 +126,7 @@ const NewModal = ({ createNote, user }) => {
               onChange={(e) => handleInputChange("content", e.target.value)}
             />
             {state.errors.content && (
-              <p className="mt-1 text-center text-xs text-red">
+              <p className="mt-1 text-center text-xs text-error">
                 Content is required
               </p>
             )}

@@ -28,8 +28,7 @@ module.exports = {
       gray: "#6c6868",
       lightGray: "#c4c2c2",
       error: "#ff0000",
-      neutral: "#E5E5E5",
-      red: "#ff0000"
+      neutral: "#E5E5E5"
     },
     fontSize: {
       xs: ".75rem",
