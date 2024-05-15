@@ -1,13 +1,25 @@
 import React from "react"
-
-const SideBar = ({ notes }) => {
+import NotesCard from "./NotesCard"
+const SideBar = ({
+  notes,
+  setSelectedNote,
+  setSelectedDate,
+  setSelectedUser
+}) => {
   return (
     <>
-      {notes?.map((note) => (
-        <div key={note.id}>{note.title}</div>
-      ))}
+      <div data-testid="sidebar-component" className="h-screen overflow-scroll">
+        {notes?.map((note) => (
+          <NotesCard
+            setSelectedNote={setSelectedNote}
+            setSelectedDate={setSelectedDate}
+            setSelectedUser={setSelectedUser}
+            key={note.id}
+            note={note}
+          />
+        ))}
+      </div>
     </>
   )
 }
-
 export default SideBar
