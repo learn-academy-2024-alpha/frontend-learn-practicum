@@ -1,9 +1,9 @@
 import React from "react"
 import noteLogo from "../assets/note-logo.png"
-import addUser from "../assets/add-user.png"
 import bin from "../assets/bin.png"
 import logOut from "../assets/logout.png"
 import NewModal from "./NewModal"
+import EditModal from "./EditModal"
 
 const Header = ({ signedOutUser, createNote, user }) => {
   const signOut = async () => {
@@ -36,11 +36,7 @@ const Header = ({ signedOutUser, createNote, user }) => {
           <NewModal createNote={createNote} user={user} />
         </div>
         <div className="flex justify-end">
-          <img
-            src={addUser}
-            alt="black graphic of a add user button"
-            className="mx-4 my-2 h-7"
-          />
+          <EditModal />
           <img
             src={bin}
             alt="black graphic of a trash bin"
