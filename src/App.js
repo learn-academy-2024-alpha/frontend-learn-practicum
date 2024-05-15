@@ -28,6 +28,7 @@ const App = () => {
   return (
     <>
       <Header signedOutUser={signedOutUser} />
+
       <Routes>
         <Route path="/" element={<Landing signedInUser={signedInUser} />} />
         {user && <Route path="/main" element={<Main />} />}
