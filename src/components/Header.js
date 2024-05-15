@@ -1,11 +1,11 @@
 import React from "react"
 import noteLogo from "../assets/note-logo.png"
 import addUser from "../assets/add-user.png"
-import edit from "../assets/edit.png"
 import bin from "../assets/bin.png"
 import logOut from "../assets/logout.png"
+import NewModal from "./NewModal"
 
-const Header = ({ signedOutUser }) => {
+const Header = ({ signedOutUser, createNote, user }) => {
   const signOut = async () => {
     try {
       const signOutResponse = await fetch("http://localhost:3000/logout", {
@@ -33,11 +33,7 @@ const Header = ({ signedOutUser }) => {
             alt="black graphic of a note and a pencil"
             className="mx-4 my-2 flex h-7 justify-start"
           />
-          <img
-            src={edit}
-            alt="black graphic of a notepad"
-            className="mx-4 my-2 h-7"
-          />
+          <NewModal createNote={createNote} user={user} />
         </div>
         <div className="flex justify-end">
           <img

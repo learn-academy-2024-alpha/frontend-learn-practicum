@@ -1,6 +1,11 @@
 import React from "react"
 import NotesCard from "./NotesCard"
-const SideBar = ({ notes }) => {
+const SideBar = ({
+  notes,
+  setSelectedNote,
+  setSelectedDate,
+  setSelectedUser
+}) => {
   return (
     <>
       <div
@@ -8,11 +13,16 @@ const SideBar = ({ notes }) => {
         className="h-screen overflow-scroll bg-neutral"
       >
         {notes?.map((note) => (
-          <NotesCard key={note.id} note={note} />
+          <NotesCard
+            setSelectedNote={setSelectedNote}
+            setSelectedDate={setSelectedDate}
+            setSelectedUser={setSelectedUser}
+            key={note.id}
+            note={note}
+          />
         ))}
       </div>
     </>
   )
 }
-
 export default SideBar

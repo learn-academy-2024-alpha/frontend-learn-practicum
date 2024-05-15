@@ -13,6 +13,8 @@ const App = () => {
     const loggedInUser = localStorage.getItem("user")
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser))
+    } else {
+      navigate("/")
     }
   }, [])
 
@@ -20,14 +22,39 @@ const App = () => {
     setUser(userData)
     navigate("/main")
   }
+
   const signedOutUser = () => {
     setUser(null)
     navigate("/")
   }
 
+  const createNote = async (newNote) => {
+    try {
+      const postResponse = await fetch("http://localhost:3000/notes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newNote)
+      })
+      console.log(postResponse)
+      if (!postResponse.ok) {
+        throw new Error("Server responded with status: " + postResponse.status)
+      }
+      await postResponse.json()
+    } catch (error) {
+      console.error("Error in createNote:", error)
+      alert("Oops something went wrong: " + error.message)
+    }
+  }
+
   return (
     <>
-      <Header signedOutUser={signedOutUser} />
+      <Header
+        user={user}
+        signedOutUser={signedOutUser}
+        createNote={createNote}
+      />
       <Routes>
         <Route path="/" element={<Landing signedInUser={signedInUser} />} />
         {user && <Route path="/main" element={<Main />} />}
