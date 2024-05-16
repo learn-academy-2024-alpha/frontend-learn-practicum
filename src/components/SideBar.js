@@ -8,7 +8,10 @@ const SideBar = ({
 }) => {
   return (
     <>
-      <div data-testid="sidebar-component" className="h-screen overflow-scroll">
+      <div
+        data-testid="sidebar-component"
+        className="h-screen overflow-scroll bg-neutral"
+      >
         {notes?.map((note) => (
           <NotesCard
             setSelectedNote={setSelectedNote}
