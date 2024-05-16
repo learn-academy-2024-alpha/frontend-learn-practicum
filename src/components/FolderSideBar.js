@@ -1,8 +1,7 @@
 import { useState } from "react"
 import FolderIcon from "../assets/empty-folder-icon.png"
-import { Link } from "react-router-dom"
 
-const FolderSideBar = ({ notes }) => {
+const FolderSideBar = () => {
   const [inactive, setInactive] = useState("Private")
   const [active, setActive] = useState("Public")
 
