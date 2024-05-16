@@ -8,6 +8,7 @@ import Landing from "./pages/Landing"
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
+  const [selectedNote, setSelectedNote] = useState(null)
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
@@ -48,16 +49,50 @@ const App = () => {
     }
   }
 
+  const updateNote = async (updatedNote) => {
+    try {
+      const patchResponse = await fetch(
+        `http://localhost:3000/notes/${updatedNote.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(updatedNote)
+        }
+      )
+      if (!patchResponse.ok) {
+        throw new Error("Server responded with status: " + patchResponse.status)
+      }
+      await patchResponse.json()
+    } catch (error) {
+      console.error("Error in updateNote:", error)
+      alert("Oops something went wrong: " + error.message)
+    }
+  }
+
   return (
     <>
       <Header
         user={user}
         signedOutUser={signedOutUser}
         createNote={createNote}
+        updateNote={updateNote}
+        selectedNote={selectedNote}
       />
       <Routes>
         <Route path="/" element={<Landing signedInUser={signedInUser} />} />
-        {user && <Route path="/main" element={<Main />} />}
+        {user && (
+          <Route
+            path="/main"
+            element={
+              <Main
+                selectedNote={selectedNote}
+                setSelectedNote={setSelectedNote}
+              />
+            }
+          />
+        )}
       </Routes>
       <Footer />
     </>

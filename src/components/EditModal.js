@@ -1,4 +1,5 @@
 import React, { useReducer } from "react"
+import { useForm } from "react-hook-form"
 import { Button, Modal, Radio, Label, TextInput } from "flowbite-react"
 import Edit from "../assets/edit.png"
 
@@ -26,8 +27,14 @@ function reducer(state, action) {
   }
 }
 
-const EditModal = ({ createNote, user }) => {
+const EditModal = ({ updateNote, user, selectedNote }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  const preloadedValues = {
+    title: selectedNote?.title,
+    content: selectedNote?.content,
+    public: selectedNote?.public
+  }
 
   const handleInputChange = (field, value) => {
     dispatch({ type: "SET_FIELD", field, value })
@@ -36,42 +43,27 @@ const EditModal = ({ createNote, user }) => {
     }
   }
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault()
-    const { title, content, public: isPublic } = state
-    let errors = {}
-    if (!title) errors.title = true
-    if (!content) errors.content = true
+  const { register, handleSubmit } = useForm({ defaultValues: preloadedValues })
 
-    if (Object.keys(errors).length) {
-      for (let error in errors) {
-        dispatch({ type: "SET_ERROR", field: error, value: true })
-      }
-      return
-    }
-
-    if (user && user.id) {
-      await createNote({
-        title,
-        content,
-        public: isPublic,
-        creator: user.id
-      })
-      dispatch({ type: "TOGGLE_MODAL" })
-    } else {
-      console.error("User data is not available")
-    }
+  const onSubmit = (data) => {
+    updateNote({
+      ...data,
+      id: selectedNote.id
+    })
+    dispatch({ type: "TOGGLE_MODAL" })
   }
 
   return (
     <>
-      <button onClick={() => dispatch({ type: "TOGGLE_MODAL" })}>
-        <img
-          src={Edit}
-          alt="pencil icon for editing notes"
-          className="mx-4 my-2 h-7"
-        />
-      </button>
+      {selectedNote?.creator === user?.id && (
+        <button onClick={() => dispatch({ type: "TOGGLE_MODAL" })}>
+          <img
+            src={Edit}
+            alt="pencil icon for editing notes"
+            className="mx-4 my-2 h-7"
+          />
+        </button>
+      )}
       <Modal
         className="m-auto h-4/5 w-1/2 bg-gray "
         show={state.openModal}
@@ -82,7 +74,7 @@ const EditModal = ({ createNote, user }) => {
           <u>Note Settings</u>
         </h1>
         <h2 className="text-center font-semibold">Update Note Privacy</h2>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <fieldset className=" p-2">
             <div className="flex justify-center gap-4">
               <Radio
@@ -91,6 +83,7 @@ const EditModal = ({ createNote, user }) => {
                 value="true"
                 checked={state.public}
                 onChange={() => handleInputChange("public", true)}
+                {...register("public", { required: true })}
               />
               <Label htmlFor="public">Public</Label>
               <Radio
@@ -99,6 +92,7 @@ const EditModal = ({ createNote, user }) => {
                 value="false"
                 checked={!state.public}
                 onChange={() => handleInputChange("public", false)}
+                {...register("public", { required: true })}
               />
               <Label htmlFor="private">Private</Label>
             </div>

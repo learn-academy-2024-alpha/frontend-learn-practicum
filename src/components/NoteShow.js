@@ -1,8 +1,5 @@
 import React from "react"
 const NoteShow = ({ selectedNote, selectedDate, selectedUser }) => {
-  console.log(`date: ${selectedDate}`)
-  console.log(`user: ${selectedUser}`)
-  console.log(`note: ${selectedNote}`)
   return (
     <>
       <div className="flex justify-between p-2">

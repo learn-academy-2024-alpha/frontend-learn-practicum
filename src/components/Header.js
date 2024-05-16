@@ -5,7 +5,13 @@ import logOut from "../assets/logout.png"
 import NewModal from "./NewModal"
 import EditModal from "./EditModal"
 
-const Header = ({ signedOutUser, createNote, user }) => {
+const Header = ({
+  signedOutUser,
+  createNote,
+  user,
+  updateNote,
+  selectedNote
+}) => {
   const signOut = async () => {
     try {
       const signOutResponse = await fetch("http://localhost:3000/logout", {
@@ -24,6 +30,8 @@ const Header = ({ signedOutUser, createNote, user }) => {
       console.error("Error: failed to sign out", error)
     }
   }
+
+  console.log(user?.id)
   return (
     <header>
       <div className="flex justify-between bg-neutral">
@@ -33,10 +41,14 @@ const Header = ({ signedOutUser, createNote, user }) => {
             alt="black graphic of a note and a pencil"
             className="mx-4 my-2 flex h-7 justify-start"
           />
-          <NewModal createNote={createNote} user={user} />
+          <NewModal createNote={createNote} userId={user?.id} />
         </div>
         <div className="flex justify-end">
-          <EditModal />
+          <EditModal
+            selectedNote={selectedNote}
+            user={user}
+            updateNote={updateNote}
+          />
           <img
             src={bin}
             alt="black graphic of a trash bin"

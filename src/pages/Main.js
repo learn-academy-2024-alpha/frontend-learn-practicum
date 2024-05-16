@@ -2,10 +2,9 @@ import React, { useState } from "react"
 import SideBar from "../components/SideBar"
 import { useFetchGet } from "../utilities/useFetchGet"
 import NoteShow from "../components/NoteShow"
-const Main = () => {
+const Main = ({ selectedNote, setSelectedNote }) => {
   const { data } = useFetchGet("notes")
   const notes = data
-  const [selectedNote, setSelectedNote] = useState(null)
   const [selectedUser, setSelectedUser] = useState(null)
   const [selectedDate, setSelectedDate] = useState(null)
   return (
