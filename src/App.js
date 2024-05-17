@@ -9,7 +9,6 @@ const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [selectedNote, setSelectedNote] = useState(null)
-
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user")
     if (loggedInUser) {
@@ -73,13 +72,13 @@ const App = () => {
 
   return (
     <>
-      <Header
+      {/* <Header
         user={user}
         signedOutUser={signedOutUser}
         createNote={createNote}
         updateNote={updateNote}
         selectedNote={selectedNote}
-      />
+      /> */}
       <Routes>
         <Route path="/" element={<Landing signedInUser={signedInUser} />} />
         {user && (
@@ -89,6 +88,10 @@ const App = () => {
               <Main
                 selectedNote={selectedNote}
                 setSelectedNote={setSelectedNote}
+                user={user}
+                signedOutUser={signedOutUser}
+                createNote={createNote}
+                updateNote={updateNote}
               />
             }
           />
