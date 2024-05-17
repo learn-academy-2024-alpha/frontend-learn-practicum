@@ -2,7 +2,15 @@ import React, { useState } from "react"
 import SideBar from "../components/SideBar"
 import { useFetchGet } from "../utilities/useFetchGet"
 import NoteShow from "../components/NoteShow"
-const Main = ({ selectedNote, setSelectedNote }) => {
+import Header from "../components/Header"
+const Main = ({
+  selectedNote,
+  setSelectedNote,
+  user,
+  createNote,
+  updateNote,
+  signedOutUser
+}) => {
   const { data } = useFetchGet("notes")
   const notes = data
   const [selectedUser, setSelectedUser] = useState(null)
@@ -19,6 +27,13 @@ const Main = ({ selectedNote, setSelectedNote }) => {
           />
         </div>
         <div className="w-[calc(100vw-16rem)]">
+          <Header
+            user={user}
+            signedOutUser={signedOutUser}
+            createNote={createNote}
+            updateNote={updateNote}
+            selectedNote={selectedNote}
+          />
           <NoteShow
             notes={notes}
             selectedNote={selectedNote}
