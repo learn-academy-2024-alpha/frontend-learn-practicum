@@ -30,8 +30,6 @@ const Header = ({
       console.error("Error: failed to sign out", error)
     }
   }
-
-  console.log(user?.id)
   return (
     <header>
       <div className="flex justify-between bg-neutral">
